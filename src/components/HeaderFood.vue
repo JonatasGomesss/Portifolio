@@ -1,10 +1,11 @@
 <template>
   <v-container class="pa-0" fluid>
     <header class="header">
-      <ul class="list">
-        <li>Abilidades De Tecnologia</li>
-        <li>Projetos</li>
-      </ul>
+      <div class="header-container">
+        <div class="logo">
+          <span class="logo-text">&lt;Jonatas /&gt;</span>
+        </div>
+      </div>
     </header>
     <v-container class="post" fluid>
       <section class="apresentacao">
@@ -124,7 +125,7 @@
         <v-row class="align-center justify-center">
           <v-col cols="12" md="6">
             <v-card
-              class="mx-auto"
+              class="mx-auto skill-card-item"
               style="border-left: 5px solid #42b883"
               title="Vue.js"
             >
@@ -137,7 +138,7 @@
 
           <v-col cols="12" md="6">
             <v-card
-              class="mx-auto"
+              class="mx-auto skill-card-item"
               prepend-icon="mdi-language-html5"
               style="border-left: 5px solid #e34c26"
               title="HTML"
@@ -151,7 +152,7 @@
 
           <v-col cols="12" md="6">
             <v-card
-              class="mx-auto"
+              class="mx-auto skill-card-item"
               prepend-icon="mdi-language-css3"
               style="border-left: 5px solid #264de4"
               title="CSS"
@@ -165,7 +166,7 @@
 
           <v-col cols="12" md="6">
             <v-card
-              class="mx-auto"
+              class="mx-auto skill-card-item"
               prepend-icon="mdi-language-javascript"
               style="border-left: 5px solid #f7df1e"
               title="JavaScript"
@@ -182,8 +183,8 @@
       <v-container id="projetos">
         <div class="projetos-container">
           <div class="infoProjetos">
-            <h1>Meus Projetos</h1>
-            <p>
+            <h1 style="padding-bottom: 5px; margin: auto;padding-top: 20px;">Meus Projetos</h1>
+            <p style="margin:auto; padding-top: 45px;">
               Projetos focados na construção de interfaces modernas e
               funcionais, aplicando na prática tecnologias de front-end e boas
               práticas de design.
@@ -426,6 +427,230 @@
 </script>
 
 <style>
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Aplicar animações aos elementos */
+.apresentacao-badge {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+.apresentacao-nome {
+  animation: fade-in-up 0.6s ease-out 0.1s both;
+}
+
+.apresentacao-cargo {
+  animation: fade-in-up 0.6s ease-out 0.2s both;
+}
+
+.apresentacao-descricao {
+  animation: fade-in-up 0.6s ease-out 0.3s both;
+}
+
+.apresentacao-cta {
+  animation: fade-in-up 0.6s ease-out 0.4s both;
+}
+
+.apresentacao-visual {
+  animation: fade-in-right 0.6s ease-out 0.2s both;
+}
+
+.hero-visual {
+  position: relative;
+  width: 100%;
+}
+
+/* ===== ANIMAÇÃO DO CÓDIGO ===== */
+.code-window {
+  position: relative;
+  background: rgba(9, 34, 89, 0.285);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 255, 255, 0.583);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.8),
+    0 0 300px rgba(0, 212, 170, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  animation: fade-in-right 0.8s ease-out;
+}
+
+.code-window:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.65),
+    0 0 80px rgba(0, 212, 170, 0.15);
+}
+
+/* ===== ANIMAÇÃO DO GLOW ===== */
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 212, 170, 0.15) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  pointer-events: none;
+  animation: pulse-glow 4s ease-in-out infinite;
+  z-index: 1;
+}
+
+/* ===== ANIMAÇÃO DOS ÍCONES FLUTUANTES ===== */
+.tech-vue {
+  animation: float 3s ease-in-out infinite !important;
+}
+
+.tech-js {
+  animation: float 3.5s ease-in-out infinite 0.5s !important;
+}
+
+.tech-html {
+  animation: float 3.2s ease-in-out infinite 0.3s !important;
+}
+
+.tech-css {
+  animation: float 2.8s ease-in-out infinite 0.7s !important;
+}
+
+/* ===== EFEITOS NOS CARDS DE SKILL ===== */
+.skill-card-item {
+  background: transparent !important;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  box-shadow: none;
+  transition: all 0.3s ease;
+  animation: fade-in-up 0.6s ease-out both;
+}
+
+.skill-card-item:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.skill-card-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.skill-card-item:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.skill-card-item:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.skill-card-item:hover {
+  transform: translateY(-8px);
+  border-color: rgba(56, 189, 248, 0.7);
+  background-color: rgba(15, 23, 42, 0.6) !important;
+  box-shadow: 0 12px 24px rgba(0, 212, 170, 0.2);
+}
+
+/* ===== EFEITOS NOS CARDS DE PROJETO ===== */
+.project-card {
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  background: radial-gradient(
+    circle at top left,
+    rgba(34, 211, 238, 0.12),
+    rgba(15, 23, 42, 0.96)
+  );
+  border: 1px solid rgba(148, 163, 184, 0.45);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+  animation: fade-in-up 0.6s ease-out both;
+}
+
+.project-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.project-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.project-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.project-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.project-card:hover {
+  transform: translateY(-12px);
+  border-color: rgba(56, 189, 248, 0.8);
+  box-shadow:
+    0 30px 60px rgba(15, 23, 42, 0.95),
+    0 0 40px rgba(56, 189, 248, 0.3);
+}
+
+.project-img {
+  flex-shrink: 0;
+  transition: transform 0.4s ease;
+}
+
+.project-img img {
+  transition: transform 0.4s ease;
+}
+
+.project-card:hover .project-img img {
+  transform: scale(1.08);
+}
+
 .apresentacao-nome {
   font-size: clamp(2.5rem, 6vw, 3.5rem);
   font-weight: 800;
@@ -553,6 +778,7 @@
   align-items: center;
   padding: 80px 20px;
   position: relative;
+  animation: fade-in-up 0.6s ease-out;
 }
 
 .infoProjetos {
@@ -645,45 +871,8 @@
     padding: 60px 18px;
   }
   .infoProjetos {
-    padding: 32px 24px;
+    padding: 24px 24px ;
   }
-}
-.project-card {
-  border-radius: 10px;
-  overflow: hidden;
-  cursor: pointer;
-  background: radial-gradient(
-    circle at top left,
-    rgba(34, 211, 238, 0.12),
-    rgba(15, 23, 42, 0.96)
-  );
-  border: 1px solid rgba(148, 163, 184, 0.45);
-  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
-  transition:
-    transform 0.28s ease,
-    box-shadow 0.28s ease,
-    border-color 0.28s ease,
-    background-color 0.28s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(56, 189, 248, 0.8);
-  box-shadow:
-    0 24px 60px rgba(15, 23, 42, 0.95),
-    0 0 40px rgba(56, 189, 248, 0.28);
-}
-
-.project-img {
-  flex-shrink: 0;
-}
-
-.project-img img {
-  transition: transform 0.4s ease;
-}
-
-.project-card:hover .project-img img {
-  transform: scale(1.04);
 }
 
 .overlay {
@@ -725,14 +914,6 @@
   align-items: stretch;
 }
 
-.project-card {
-  height: 100%;
-  min-height: 380px;
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-}
-
 .mx-auto {
   transition: transform 0.3s ease;
 }
@@ -752,14 +933,91 @@
   gap: 24px;
   border: none;
 }
+/* ===== HEADER ELEGANTE MINIMALISTA ===== */
 .header {
-  box-shadow: 0px 1px 17px rgba(133, 132, 132, 0.5);
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(5, 8, 22, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 212, 170, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 1rem 0;
+  transition: all 0.3s ease;
 }
 
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-text {
+  font-size: 1.4rem;
+  font-weight: 800;
+  font-family: "Fira Code", monospace;
+  background: linear-gradient(135deg, #00a88a, #00d4aa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: fade-in-up 0.6s ease-out;
+}
+
+.logo-text:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 8px rgba(0, 212, 170, 0.5));
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0 1.5rem;
+  }
+
+  .logo-text {
+    font-size: 1.1rem;
+  }
+
+  .nav-links {
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-container {
+    padding: 0 1rem;
+    height: 50px;
+  }
+
+  .logo-text {
+    font-size: 0.9rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .nav-link {
+    font-size: 0.75rem;
+  }
+}
 .list {
   display: flex;
   gap: 26px;
@@ -790,6 +1048,7 @@
   width: 100%;
 }
 .apresentacao {
+  background-color: transparent;
   margin: 4% 0 5%;
   padding: 3rem 1.5rem;
   width: 100%;
@@ -930,70 +1189,12 @@
 }
 
 .apresentacao-visual {
+  background-color: rgba(0, 0, 255, 0);
   display: flex;
-  width: 435px;
   align-items: top;
-  padding-top: 0;
+  padding-top: 30px;
   padding-bottom: 0;
   text-align: left;
-}
-
-.hero-visual {
-  position: relative;
-  width: 100%;
-}
-
-.hero-visual::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(
-    circle,
-    rgba(0, 212, 170, 0.15) 0%,
-    transparent 70%
-  );
-  border-radius: 50%;
-  pointer-events: none;
-  animation: pulse-glow 4s ease-in-out infinite;
-}
-
-@keyframes pulse-glow {
-  0%,
-  100% {
-    opacity: 0.6;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.1);
-  }
-}
-
-.code-window {
-  position: relative;
-  background: rgba(12, 12, 22, 0.95);
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid rgba(0, 255, 255, 0.2);
-  box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.6),
-    0 0 60px rgba(0, 212, 170, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-.code-window:hover {
-  transform: translateY(-4px);
-  box-shadow:
-    0 30px 70px rgba(0, 0, 0, 0.65),
-    0 0 80px rgba(0, 212, 170, 0.15);
 }
 
 .code-header {
@@ -1080,46 +1281,20 @@
   top: -8px;
   right: -15px;
   color: #42b883 !important;
-  animation: float 3s ease-in-out infinite;
 }
 .tech-js {
   bottom: 5px;
   right: -10px;
   color: #f7df1e !important;
-  animation: float 3.5s ease-in-out infinite 0.5s;
 }
 .tech-html {
   bottom: 0;
   left: -20px;
   color: #e34c26 !important;
-  animation: float 3.2s ease-in-out infinite 0.3s;
 }
 .tech-css {
   top: 5px;
   left: -25px;
   color: #264de4 !important;
-  animation: float 2.8s ease-in-out infinite 0.7s;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-@media (max-width: 960px) {
-  .apresentacao-visual {
-    order: -1;
-    padding: 1rem 0 !important;
-    justify-content: center;
-  }
-  .hero-visual {
-    max-width: 100%;
-    min-width: 0;
-  }
 }
 </style>
