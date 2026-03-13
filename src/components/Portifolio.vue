@@ -98,7 +98,6 @@
       <div class="container">
         <div ref="techHead" :class="['reveal', { 'reveal--visible': techVisible }]">
           <div class="section__head">
-            <span class="section__tag">// tecnologias</span>
             <h2 class="section__title">Principais <span class="gradient">Tecnologias</span></h2>
             <p class="section__sub">Ferramentas e tecnologias que utilizo para construir interfaces incríveis</p>
           </div>
@@ -127,7 +126,6 @@
       <div class="container">
         <div ref="projHead" :class="['reveal', { 'reveal--visible': projVisible }]">
           <div class="section__head">
-            <span class="section__tag">// projetos</span>
             <h2 class="section__title">Meus <span class="gradient">Projetos</span></h2>
             <p class="section__sub">Projetos focados na construção de interfaces modernas e funcionais</p>
           </div>
@@ -175,7 +173,6 @@
       <div class="blob blob--contact" />
       <div class="container container--narrow">
         <div ref="contHead" :class="['reveal', { 'reveal--visible': contVisible }]" style="text-align:center">
-          <span class="section__tag">// contato</span>
           <h2 class="section__title">Vamos <span class="gradient">Conversar</span>?</h2>
           <p class="section__sub" style="margin-inline:auto">Estou disponível para novos projetos e oportunidades. Entre em contato!</p>
         </div>
@@ -427,14 +424,12 @@ body {
 }
 
 .section__head {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  flex-direction:column ;
   margin-bottom: 4rem;
-}
-
-.section__tag {
-  color: var(--primary);
-  font-size: .875rem;
-  font-weight: 500;
 }
 
 .section__title {
