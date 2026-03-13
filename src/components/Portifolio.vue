@@ -1,6 +1,7 @@
-<!-- eslint-disable @stylistic/max-statements-per-line -->
 <template>
   <div class="min-h-screen">
+
+    <!-- ===== NAVBAR ===== -->
     <nav class="navbar" :class="{ 'navbar--scrolled': scrolled }">
       <div class="navbar__inner">
         <button class="navbar__logo" @click="scrollTo('#hero')">&lt;Jonatas /&gt;</button>
@@ -97,6 +98,7 @@
       <div class="container">
         <div ref="techHead" :class="['reveal', { 'reveal--visible': techVisible }]">
           <div class="section__head">
+            <span class="section__tag">// tecnologias</span>
             <h2 class="section__title">Principais <span class="gradient">Tecnologias</span></h2>
             <p class="section__sub">Ferramentas e tecnologias que utilizo para construir interfaces incríveis</p>
           </div>
@@ -125,6 +127,7 @@
       <div class="container">
         <div ref="projHead" :class="['reveal', { 'reveal--visible': projVisible }]">
           <div class="section__head">
+            <span class="section__tag">// projetos</span>
             <h2 class="section__title">Meus <span class="gradient">Projetos</span></h2>
             <p class="section__sub">Projetos focados na construção de interfaces modernas e funcionais</p>
           </div>
@@ -172,6 +175,7 @@
       <div class="blob blob--contact" />
       <div class="container container--narrow">
         <div ref="contHead" :class="['reveal', { 'reveal--visible': contVisible }]" style="text-align:center">
+          <span class="section__tag">// contato</span>
           <h2 class="section__title">Vamos <span class="gradient">Conversar</span>?</h2>
           <p class="section__sub" style="margin-inline:auto">Estou disponível para novos projetos e oportunidades. Entre em contato!</p>
         </div>
@@ -232,7 +236,7 @@
         <div ref="contFoot" :class="['reveal', { 'reveal--visible': contFootVisible }]" style="--delay:0.3s">
           <div class="footer">
             <p class="footer__text">
-              &lt;<span style="color:var(--primary)">Jonatas</span> /&gt;  ©  {{ year }}
+              &lt;<span style="color:var(--primary)">Jonatas</span> /&gt; © {{ year }} — Todos os direitos reservados
             </p>
           </div>
         </div>
@@ -263,7 +267,7 @@
 
   const projects = [
     { title: 'Tela de Login', description: 'Interface de login moderna com validação e design responsivo.', tags: ['Vue', 'Vuetify', 'JavaScript'], link: 'https://tela-login-beryl.vercel.app/' },
-    { title: 'Filmes e Séries', description: 'Catálogo de filmes e séries consumindo API externa.', tags: ['Vue', 'Vuetify', 'API', 'JavaScript'], link: 'https://filmes-series-psi.vercel.app/' },
+    { title: 'Filmes e Séries', description: 'Catálogo de filmes e séries consumindo API externa com busca e filtros.', tags: ['Vue', 'Vuetify', 'API', 'JavaScript'], link: 'https://filmes-series-psi.vercel.app/' },
     { title: 'Viagem de Chihiro', description: 'Landing page temática com animações e design imersivo.', tags: ['HTML', 'CSS'], link: 'https://viagem-de-chihiro-theta.vercel.app/' },
     { title: 'Jordan Shoes', description: 'Site portfolio com design moderno e código limpo.', tags: ['Vue', 'CSS', 'JavaScript'], link: 'https://jordanshoes-gilt.vercel.app/' },
   ]
@@ -423,10 +427,7 @@ body {
 }
 
 .section__head {
-  display: flex;
-  flex-direction:column ;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
   margin-bottom: 4rem;
 }
 
@@ -439,6 +440,7 @@ body {
 .section__title {
   font-size: clamp(1.75rem, 4vw, 2.25rem);
   font-weight: 700;
+  margin-top: .75rem;
 }
 
 .section__sub {
@@ -526,6 +528,7 @@ body {
   transform: translateY(0);
 }
 
+/* ── Gradient text ── */
 .gradient {
   background: linear-gradient(
     120deg,
@@ -546,6 +549,7 @@ body {
   0%   { background-position: 0% center; }
   100% { background-position: 220% center; }
 }
+
 /* ── Navbar ── */
 .navbar {
   position: fixed;
@@ -1016,14 +1020,21 @@ body {
 /* ── Project cards ── */
 .proj-grid {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.25rem;
   grid-template-columns: 1fr;
 }
 
 @media (min-width: 768px) {
   .proj-grid {
+    gap: 1.5rem;
     grid-template-columns: 1fr 1fr;
   }
+}
+
+/* wrapper do stagger precisa ocupar a largura total */
+.proj-grid > .stagger {
+  display: flex;
+  width: 100%;
 }
 
 .proj-card {
@@ -1034,6 +1045,7 @@ body {
   background: var(--card);
   border: 1px solid var(--border);
   text-decoration: none;
+  width: 100%;
   height: 100%;
   transition: border-color .3s, box-shadow .3s;
 }
