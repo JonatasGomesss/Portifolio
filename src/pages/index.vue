@@ -1,8 +1,8 @@
 <template>
-  <HeaderFood />
+  <Portifolio />
 </template>
 
 <script lang="ts" setup>
-  import HeaderFood from '@/components/HeaderFood'
+  import Portifolio from '@/components/Portifolio'
 
 </script>
