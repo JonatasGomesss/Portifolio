@@ -223,7 +223,7 @@
               </svg>
               <span>GitHub</span>
             </a>
-            <a class="contact-btn" href="https://www.google.com/url?q=https://www.linkedin.com/in/jonatasgomess/" rel="noopener noreferrer" target="_blank">
+            <a class="contact-btn" href="https://www.linkedin.com/in/jonatasgomess" rel="noopener noreferrer" target="_blank">
               <svg
                 fill="none"
                 height="20"
