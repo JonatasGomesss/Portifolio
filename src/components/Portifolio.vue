@@ -195,7 +195,13 @@
                 width="20"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <rect height="16" rx="2" width="20" x="2" y="4" />
+                <rect
+                  height="16"
+                  rx="2"
+                  width="20"
+                  x="2"
+                  y="4"
+                />
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
               </svg>
               <span>Email</span>
@@ -217,7 +223,7 @@
               </svg>
               <span>GitHub</span>
             </a>
-            <a class="contact-btn" href="https://www.linkedin.com/in/jonatasgomess/" rel="noopener noreferrer" target="_blank">
+            <a class="contact-btn" href="www.linkedin.com/in/jonatasgomess" rel="noopener noreferrer" target="_blank">
               <svg
                 fill="none"
                 height="20"
@@ -252,118 +258,120 @@
 </template>
 
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue'
+  import { onMounted, onUnmounted, ref } from 'vue'
 
-// ── Dados estáticos ──────────────────────────────────────────────────────────
-const year = new Date().getFullYear()
+  // ── Dados estáticos ──────────────────────────────────────────────────────────
+  const year = new Date().getFullYear()
 
-const navLinks = [
-  { label: 'Início',       href: '#hero' },
-  { label: 'Tecnologias',  href: '#tech' },
-  { label: 'Projetos',     href: '#projects' },
-  { label: 'Contato',      href: '#contact' },
-]
+  const navLinks = [
+    { label: 'Início', href: '#hero' },
+    { label: 'Tecnologias', href: '#tech' },
+    { label: 'Projetos', href: '#projects' },
+    { label: 'Contato', href: '#contact' },
+  ]
 
-const techs = [
-  { icon: '🟢', name: 'Vue.js',      description: 'Framework que escolhi para desenvolver interfaces modernas e reativas.' },
-  { icon: '🧱', name: 'HTML',        description: 'Linguagem responsável por estruturar todo o conteúdo das páginas web.' },
-  { icon: '🎨', name: 'CSS',         description: 'Estiliza e organiza o layout das páginas, criando interfaces visuais atraentes.' },
-  { icon: '⚡', name: 'JavaScript',  description: 'Linguagem responsável pela lógica e interatividade das aplicações web.' },
-]
+  const techs = [
+    { icon: '🟢', name: 'Vue.js', description: 'Framework que escolhi para desenvolver interfaces modernas e reativas.' },
+    { icon: '🧱', name: 'HTML', description: 'Linguagem responsável por estruturar todo o conteúdo das páginas web.' },
+    { icon: '🎨', name: 'CSS', description: 'Estiliza e organiza o layout das páginas, criando interfaces visuais atraentes.' },
+    { icon: '⚡', name: 'JavaScript', description: 'Linguagem responsável pela lógica e interatividade das aplicações web.' },
+  ]
 
-const projects = [
-  {
-    title: 'Perspectiva',
-    description: 'Blog editorial responsivo com dark/light mode, grid de artigos categorizados e seção de newsletter. Dados estáticos com animações de entrada escalonadas.',
-    tags: ['Vue 3', 'CSS', 'JavaScript'],
-    link: 'https://blog-three-gilt-75.vercel.app/',
-  },
-  {
-    title: 'Tela de Login',
-    description: 'Interface de login moderna com validação e design responsivo.',
-    tags: ['Vue', 'Vuetify', 'JavaScript'],
-    link: 'https://tela-login-beryl.vercel.app/',
-  },
-  {
-    title: 'Filmes e Séries',
-    description: 'Catálogo de filmes e séries consumindo API externa com busca e filtros.',
-    tags: ['Vue', 'Vuetify', 'API', 'JavaScript'],
-    link: 'https://filmes-series-psi.vercel.app/',
-  },
-  {
-    title: 'Viagem de Chihiro',
-    description: 'Landing page temática com animações e design imersivo.',
-    tags: ['HTML', 'CSS'],
-    link: 'https://viagem-de-chihiro-theta.vercel.app/',
-  },
-  {
-    title: 'Jordan Shoes',
-    description: 'Site portfolio com design moderno e código limpo.',
-    tags: ['Vue', 'CSS', 'JavaScript'],
-    link: 'https://jordanshoes-gilt.vercel.app/',
-  },
-]
+  const projects = [
+    {
+      title: 'Perspectiva',
+      description: 'Blog editorial responsivo com dark/light mode, grid de artigos categorizados e seção de newsletter. Dados estáticos com animações de entrada escalonadas.',
+      tags: ['Vue 3', 'CSS', 'JavaScript'],
+      link: 'https://blog-three-gilt-75.vercel.app/',
+    },
+    {
+      title: 'Tela de Login',
+      description: 'Interface de login moderna com validação e design responsivo.',
+      tags: ['Vue', 'Vuetify', 'JavaScript'],
+      link: 'https://tela-login-beryl.vercel.app/',
+    },
+    {
+      title: 'Filmes e Séries',
+      description: 'Catálogo de filmes e séries consumindo API externa com busca e filtros.',
+      tags: ['Vue', 'Vuetify', 'API', 'JavaScript'],
+      link: 'https://filmes-series-psi.vercel.app/',
+    },
+    {
+      title: 'Viagem de Chihiro',
+      description: 'Landing page temática com animações e design imersivo.',
+      tags: ['HTML', 'CSS'],
+      link: 'https://viagem-de-chihiro-theta.vercel.app/',
+    },
+    {
+      title: 'Jordan Shoes',
+      description: 'Site portfolio com design moderno e código limpo.',
+      tags: ['Vue', 'CSS', 'JavaScript'],
+      link: 'https://jordanshoes-gilt.vercel.app/',
+    },
+  ]
 
-// ── Estado reativo ───────────────────────────────────────────────────────────
-const scrolled    = ref(false)
-const mobileOpen  = ref(false)
+  // ── Estado reativo ───────────────────────────────────────────────────────────
+  const scrolled = ref(false)
+  const mobileOpen = ref(false)
 
-// ── Refs de visibilidade ─────────────────────────────────────────────────────
-const techHead         = ref(null)
-const techVisible      = ref(false)
-const techCardsVisible = ref(false)
+  // ── Refs de visibilidade ─────────────────────────────────────────────────────
+  const techHead = ref(null)
+  const techVisible = ref(false)
+  const techCardsVisible = ref(false)
 
-const projHead         = ref(null)
-const projVisible      = ref(false)
-const projCardsVisible = ref(false)
+  const projHead = ref(null)
+  const projVisible = ref(false)
+  const projCardsVisible = ref(false)
 
-const contHead         = ref(null)
-const contVisible      = ref(false)
-const contLinks        = ref(null)
-const contLinksVisible = ref(false)
-const contFoot         = ref(null)
-const contFootVisible  = ref(false)
+  const contHead = ref(null)
+  const contVisible = ref(false)
+  const contLinks = ref(null)
+  const contLinksVisible = ref(false)
+  const contFoot = ref(null)
+  const contFootVisible = ref(false)
 
-// ── Métodos ──────────────────────────────────────────────────────────────────
-function slugify (title) {
-  return title.toLowerCase().replace(/\s/g, '-')
-}
+  // ── Métodos ──────────────────────────────────────────────────────────────────
+  function slugify (title) {
+    return title.toLowerCase().replace(/\s/g, '-')
+  }
 
-function scrollTo (href) {
-  mobileOpen.value = false
-  document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
-}
+  function scrollTo (href) {
+    mobileOpen.value = false
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
+  }
 
-function onScroll () {
-  scrolled.value = window.scrollY > 40
-}
+  function onScroll () {
+    scrolled.value = window.scrollY > 40
+  }
 
-function observeReveal (elRef, visRef, delay = 0) {
-  const obs = new IntersectionObserver(([e]) => {
-    if (e.isIntersecting) {
-      setTimeout(() => { visRef.value = true }, delay)
-      obs.disconnect()
-    }
-  }, { rootMargin: '-80px' })
-  if (elRef.value) obs.observe(elRef.value)
-}
+  function observeReveal (elRef, visRef, delay = 0) {
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          visRef.value = true
+        }, delay)
+        obs.disconnect()
+      }
+    }, { rootMargin: '-80px' })
+    if (elRef.value) obs.observe(elRef.value)
+  }
 
-// ── Lifecycle ────────────────────────────────────────────────────────────────
-onMounted(() => {
-  window.addEventListener('scroll', onScroll)
+  // ── Lifecycle ────────────────────────────────────────────────────────────────
+  onMounted(() => {
+    window.addEventListener('scroll', onScroll)
 
-  observeReveal(techHead,  techVisible)
-  observeReveal(techHead,  techCardsVisible,  200)
-  observeReveal(projHead,  projVisible)
-  observeReveal(projHead,  projCardsVisible,  200)
-  observeReveal(contHead,  contVisible)
-  observeReveal(contLinks, contLinksVisible)
-  observeReveal(contFoot,  contFootVisible)
-})
+    observeReveal(techHead, techVisible)
+    observeReveal(techHead, techCardsVisible, 200)
+    observeReveal(projHead, projVisible)
+    observeReveal(projHead, projCardsVisible, 200)
+    observeReveal(contHead, contVisible)
+    observeReveal(contLinks, contLinksVisible)
+    observeReveal(contFoot, contFootVisible)
+  })
 
-onUnmounted(() => {
-  window.removeEventListener('scroll', onScroll)
-})
+  onUnmounted(() => {
+    window.removeEventListener('scroll', onScroll)
+  })
 </script>
 
 <style>
@@ -384,7 +392,6 @@ onUnmounted(() => {
   --muted-rgb:          128, 128, 160;
 }
 
-
 /* ══════════════════════════════════════════════════
    RESET
 ══════════════════════════════════════════════════ */
@@ -401,7 +408,6 @@ body {
   color: var(--fg);
   font-family: 'Inter', sans-serif;
 }
-
 
 /* ══════════════════════════════════════════════════
    ANIMATIONS
@@ -502,7 +508,6 @@ body {
   max-width: 32rem;
 }
 
-
 /* ── Blobs ── */
 .blob {
   position: absolute;
@@ -547,7 +552,6 @@ body {
   filter: blur(100px);
 }
 
-
 /* ── Reveal / Stagger ── */
 .hero-anim {
   opacity: 0;
@@ -586,7 +590,6 @@ body {
   transform: translateY(0);
 }
 
-
 /* ── Gradient text ── */
 .gradient {
   background: linear-gradient(
@@ -603,7 +606,6 @@ body {
   background-clip: text;
   animation: shimmer 4s linear infinite;
 }
-
 
 /* ══ NAVBAR ══════════════════════════════════════ */
 .navbar {
@@ -728,7 +730,6 @@ body {
   max-height: 0;
 }
 
-
 /* ── Dots ── */
 .dot {
   display: inline-block;
@@ -739,7 +740,6 @@ body {
 .dot--r { width: 10px; height: 10px; background: rgba(239, 68,  68,  0.6); }
 .dot--y { width: 10px; height: 10px; background: rgba(var(--primary-rgb), 0.6); }
 .dot--g { width: 10px; height: 10px; background: rgba(var(--accent-rgb),  0.6); }
-
 
 /* ══ HERO ════════════════════════════════════════ */
 .hero {
@@ -817,7 +817,6 @@ body {
   flex-wrap: wrap;
 }
 
-
 /* ── Buttons ── */
 .btn {
   padding: 0.75rem 1.5rem;
@@ -842,7 +841,6 @@ body {
   color: var(--primary);
 }
 .btn--outline:hover { background: rgba(var(--primary-rgb), 0.1); }
-
 
 /* ── Code card ── */
 .code-card {
@@ -922,7 +920,6 @@ body {
 .pr { color: rgba(var(--accent-rgb), 0.85); }
 .st { color: var(--primary); }
 
-
 /* ── Float icons ── */
 .float-icon {
   position: absolute;
@@ -981,7 +978,6 @@ body {
   animation: float 2.8s ease-in-out 0.7s infinite;
 }
 
-
 /* ══ TECH CARDS ══════════════════════════════════ */
 .tech-grid {
   display: grid;
@@ -1024,7 +1020,6 @@ body {
   color: var(--muted-fg);
   line-height: 1.6;
 }
-
 
 /* ══ PROJECT CARDS ═══════════════════════════════ */
 .proj-grid {
@@ -1139,7 +1134,6 @@ body {
   border: 1px solid rgba(var(--primary-rgb), 0.2);
 }
 
-
 /* ══ CONTACT ═════════════════════════════════════ */
 .contact-links {
   display: flex;
@@ -1170,7 +1164,6 @@ body {
   box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.1);
   color: var(--fg);
 }
-
 
 /* ══ FOOTER ══════════════════════════════════════ */
 .footer {
