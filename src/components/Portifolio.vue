@@ -255,16 +255,13 @@
               >
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z" />
               </svg>
-              <span>+55 88 96473-3623</span>
+              <span>Meu Contato</span>
             </a>
           </div>
         </div>
 
         <div ref="contFoot" :class="['reveal', { 'reveal--visible': contFootVisible }]" style="--delay:0.3s">
           <div class="footer">
-            <p class="footer__text">
-              &lt;<span style="color:var(--primary)">Jonatas</span> /&gt; © {{ year }} — Todos os direitos reservados
-            </p>
           </div>
         </div>
       </div>
@@ -324,13 +321,17 @@
       tags: ['Vue', 'CSS', 'JavaScript'],
       link: 'https://jordanshoes-gilt.vercel.app/',
     },
+    {
+      title: 'Café Origem',
+      description: 'Site do portfolio com design moderno e código limpo focado em venda de cafe.',
+      tags: ['Vue', 'CSS', 'JavaScript'],
+      link: 'https://coffe-iota-eight.vercel.app/',
+    },
   ]
 
-  // ── Estado reativo ───────────────────────────────────────────────────────────
   const scrolled = ref(false)
   const mobileOpen = ref(false)
 
-  // ── Refs de visibilidade ─────────────────────────────────────────────────────
   const techHead = ref(null)
   const techVisible = ref(false)
   const techCardsVisible = ref(false)
